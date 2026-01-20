@@ -1,5 +1,5 @@
 // Order.java
-import java.util.ArrayList;
+import java.util.ArrayList; //used arraylist instead of array to store items dynamically
 
 public class OrderCart {
     // private fields : encapsulation
@@ -20,7 +20,7 @@ public class OrderCart {
         return totalAmount;
     }
 
-    // Show bill
+    // Method to Show bill
     public void showBill() {
         System.out.println("\n-----YOUR BILL: -----");
         for (int i = 0; i < items.size(); i++) {

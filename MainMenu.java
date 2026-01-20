@@ -9,14 +9,14 @@ public class MainMenu {
         // Create order cart
         OrderCart myOrder = new OrderCart();
 
-        System.out.println(" Welcome to My Coffee Shop ");
+        System.out.println(" Welcome to Brew Coffee !!\\n Enjoy the best coffee in town!");
 
-        boolean ordering = true;
+        boolean ordering = true; //starting order loop
 
         while (ordering) {
 
-            // Display menu
-            System.out.println("\n--- Menu ---");
+            // Display the menu
+            System.out.println("\n--- Our Menu ---");
             System.out.println("1. Espresso - Rs: 250");
             System.out.println("2. Cappuccino - Rs: 300");
             System.out.println("3. Latte - Rs: 350");
@@ -27,20 +27,20 @@ public class MainMenu {
             System.out.print("Enter your choice: ");
             int choice = sc.nextInt();
 
-            if (choice < 1 || choice > 6) {
+            if (choice < 1 || choice > 6) { //invalid choice handling
                 System.out.println("Invalid choice, please try again!");
                 continue;
             }
 
             // Cup size selection
-            System.out.println("\nSelect Cup Size:");
+            System.out.println("\nSelect Your Desired Cup Size:");
             System.out.println("1. Small");
             System.out.println("2. Medium (+50)");
             System.out.println("3. Large (+100)");
             System.out.print("Enter size choice: ");
             int sizeChoice = sc.nextInt();
 
-            CupSize size;
+            CupSize size; //enum method to select cup size
             if (sizeChoice == 1) {
                 size = CupSize.SMALL;
             } else if (sizeChoice == 2) {
@@ -49,11 +49,11 @@ public class MainMenu {
                 size = CupSize.LARGE;
             }
 
-            System.out.print("Enter quantity: ");
+            System.out.print("Enter desired quantity: ");
             int qty = sc.nextInt();
 
-            Coffee selectedCoffee;
-
+            Coffee selectedCoffee; //variable to store selected coffee item
+//getting the space ready , arent assigning anything yet
             if (choice == 1) {
                 selectedCoffee = new Coffee("Espresso", 250, size);
             } else if (choice == 2) {
@@ -68,19 +68,19 @@ public class MainMenu {
                 selectedCoffee = new Coffee("French Vanilla", 280, size);
             }
 
-            // Add to order
+            // Adding to order
             myOrder.addItem(selectedCoffee, qty);
 
             System.out.print("Do you want to order more items? (yes/no): ");
             String more = sc.next();
 
-            if (more.equalsIgnoreCase("no")) {
-                ordering = false;
+            if (more.equalsIgnoreCase("no")) { //used equalsIgnoreCase to avoid case sensitivity issues
+                ordering = false; //if no more items to order, exit loop
             }
         }
 
         // Show final bill
-        myOrder.showBill();
+        myOrder.showBill(); //calling show bill method from OrderCart class
 
         sc.close();
     }

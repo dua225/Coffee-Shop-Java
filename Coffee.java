@@ -2,14 +2,14 @@
 public class Coffee {
 
     // private fields (encapsulation)
-    private String name;
-    private double basePrice;
-    private CupSize size;
+    private String name; //coffee name
+    private double OrigPrice; //base price without size
+    private CupSize size; //stores cup size using enum CupSize
 
     // Constructor
     public Coffee(String name, double basePrice, CupSize size) {
         this.name = name;
-        this.basePrice = basePrice;
+        this.OrigPrice = basePrice;
         this.size = size;
     }
 
@@ -20,7 +20,7 @@ public class Coffee {
 
     // Getter for base price (without size)
     public double getBasePrice() {
-        return basePrice;
+        return OrigPrice;
     }
 
     // Getter for cup size
@@ -30,6 +30,6 @@ public class Coffee {
 
     // Calculate final price based on cup size
     public double getPrice() {
-        return basePrice + size.getExtraPrice();
+        return OrigPrice + size.getExtraPrice();
     }
 }
