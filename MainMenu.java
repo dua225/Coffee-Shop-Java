@@ -3,16 +3,13 @@ import java.util.Scanner;
 
 public class MainMenu {
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
-
         // Create order cart
         OrderCart myOrder = new OrderCart();
 
-        System.out.println(" Welcome to Brew Coffee !!\\n Enjoy the best coffee in town!");
+        System.out.println("\n Welcome to Brew Coffee !!\n " + "Enjoy the best coffee in town!");
 
-        boolean ordering = true; //starting order loop
-
+        boolean ordering = true; // starting order loop
         while (ordering) {
 
             // Display the menu
@@ -27,11 +24,10 @@ public class MainMenu {
             System.out.print("Enter your choice: ");
             int choice = sc.nextInt();
 
-            if (choice < 1 || choice > 6) { //invalid choice handling
+            if (choice < 1 || choice > 6) { // invalid choice handling
                 System.out.println("Invalid choice, please try again!");
                 continue;
             }
-
             // Cup size selection
             System.out.println("\nSelect Your Desired Cup Size:");
             System.out.println("1. Small");
@@ -40,20 +36,25 @@ public class MainMenu {
             System.out.print("Enter size choice: ");
             int sizeChoice = sc.nextInt();
 
-            CupSize size; //enum method to select cup size
-            if (sizeChoice == 1) {
-                size = CupSize.SMALL;
-            } else if (sizeChoice == 2) {
-                size = CupSize.MEDIUM;
-            } else {
-                size = CupSize.LARGE;
+            CupSize size;
+            try {
+                if (sizeChoice == 1) {
+                    size = CupSize.SMALL;
+                } else if (sizeChoice == 2) {
+                    size = CupSize.MEDIUM;
+                } else if (sizeChoice == 3) {
+                    size = CupSize.LARGE;
+                } else {
+                    throw new IllegalArgumentException("Invalid cup size selected!");
+                }
+            } catch (IllegalArgumentException e) {
+                System.out.println("Invalid cup size, please try again!");
+                continue; // go back to start of loop
             }
-
             System.out.print("Enter desired quantity: ");
             int qty = sc.nextInt();
 
-            Coffee selectedCoffee; //variable to store selected coffee item
-//getting the space ready , arent assigning anything yet
+            Coffee selectedCoffee; // variable to store selected coffee item
             if (choice == 1) {
                 selectedCoffee = new Coffee("Espresso", 250, size);
             } else if (choice == 2) {
@@ -67,20 +68,18 @@ public class MainMenu {
             } else {
                 selectedCoffee = new Coffee("French Vanilla", 280, size);
             }
-
             // Adding to order
             myOrder.addItem(selectedCoffee, qty);
 
             System.out.print("Do you want to order more items? (yes/no): ");
-            String more = sc.next();
+            String moreitems = sc.next();
 
-            if (more.equalsIgnoreCase("no")) { //used equalsIgnoreCase to avoid case sensitivity issues
-                ordering = false; //if no more items to order, exit loop
+            if (moreitems.equalsIgnoreCase("no")) { // avoid case sensitivity issues
+                ordering = false;
             }
         }
-
         // Show final bill
-        myOrder.showBill(); //calling show bill method from OrderCart class
+        myOrder.showBill();
 
         sc.close();
     }
