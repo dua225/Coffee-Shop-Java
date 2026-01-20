@@ -1,22 +1,39 @@
 // Coffee.java
+// Represents a coffee item with a base price and cup sizes.
 public class Coffee {
-    // private fields : encapsulation
+    // Fields
     private String name;
-    private double price;
+    private double basePrice;
+
+    // Cup sizes
+    public enum Size { SMALL, MEDIUM, LARGE }
 
     // Constructor
-    public Coffee(String name, double price) {
+    public Coffee(String name, double basePrice) {
         this.name = name;
-        this.price = price;
+        this.basePrice = basePrice;
     }
 
-    // Getter for name
+    // Returns the coffee name
     public String getName() {
         return name;
     }
 
-    // Getter for price
-    public double getPrice() {
-        return price;
+    // Returns the base price (small)
+    public double getBasePrice() {
+        return basePrice;
+    }
+
+    // Returns price adjusted for the given size
+    public double getPrice(Size size) {
+        switch (size) {
+            case MEDIUM:
+                return basePrice * 1.25;
+            case LARGE:
+                return basePrice * 1.5;
+            case SMALL:
+            default:
+                return basePrice;
+        }
     }
 }
