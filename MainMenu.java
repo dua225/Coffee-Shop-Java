@@ -1,4 +1,4 @@
-// CoffeeShop.java
+// CoffeeShop: A simple terminal-based coffee ordering system.
 import java.util.Scanner;
 
 public class MainMenu {
