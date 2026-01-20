@@ -1,4 +1,4 @@
-// Coffee.java
+// Coffee.java(class where encapsulation is applied)
 public class Coffee {
 
     // private fields (encapsulation)
