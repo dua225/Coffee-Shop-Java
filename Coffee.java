@@ -1,22 +1,35 @@
 // Coffee.java
 public class Coffee {
-    // private fields : encapsulation
+
+    // private fields (encapsulation)
     private String name;
-    private double price;
+    private double basePrice;
+    private CupSize size;
 
     // Constructor
-    public Coffee(String name, double price) {
+    public Coffee(String name, double basePrice, CupSize size) {
         this.name = name;
-        this.price = price;
+        this.basePrice = basePrice;
+        this.size = size;
     }
 
-    // Getter for name
+    // Getter for coffee name
     public String getName() {
         return name;
     }
 
-    // Getter for price
+    // Getter for base price (without size)
+    public double getBasePrice() {
+        return basePrice;
+    }
+
+    // Getter for cup size
+    public CupSize getSize() {
+        return size;
+    }
+
+    // Calculate final price based on cup size
     public double getPrice() {
-        return price;
+        return basePrice + size.getExtraPrice();
     }
 }
