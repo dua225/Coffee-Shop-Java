@@ -24,9 +24,14 @@ public class OrderCart {
     public void showBill() {
         System.out.println("\n-----YOUR BILL: -----");
         for (int i = 0; i < items.size(); i++) {
-            System.out.println(items.get(i).getName() + " x" + quantities.get(i) + " = Rs:" + (items.get(i).getPrice() * quantities.get(i)));
-        }
+            System.out.println(
+    items.get(i).getName() + " (" + items.get(i).getSize() + ") x" 
+    + quantities.get(i) + " = Rs:" 
+    + (items.get(i).getPrice() * quantities.get(i))
+);
+
         System.out.println("Total Amount = Rs:" + totalAmount);
         System.out.println("Thank you for visiting our shop! Please Come Again :)");
     }
+}
 }
